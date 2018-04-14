@@ -47,3 +47,4 @@ index ec82a34..16fd231 100755
  	PPsmb.add_argument('--test-module',dest='test-module',action='store_true',help='test the module before use it')
  	#1.19- Parent parser: PrivilegeEscalation
  	PPprivilegeEscalation0 = argparse.ArgumentParser(add_help=False,formatter_class=myFormatterClass)
+
