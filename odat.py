@@ -15,7 +15,7 @@ except ImportError:
 	COLORLOG_AVAILABLE = False
 
 import argparse, logging, platform, cx_Oracle, string, os, sys
-from Utils import areEquals, configureLogging,ErrorSQLRequest, sidHasBeenGiven, anAccountIsGiven, ipOrNameServerHasBeenGiven, getCredentialsFormated
+from Utils import areEquals, configureLogging, ErrorSQLRequest, sidHasBeenGiven, anAccountIsGiven, ipOrNameServerHasBeenGiven, getCredentialsFormated
 from sys import exit,stdout
 
 from Constants import *
@@ -209,7 +209,6 @@ def runAllModules(args):
 			#CVE_2012_3137
 			cve = CVE_2012_3137 (args)
 			cve.testAll()
-			
 	#usernamelikepassword
 	args['run'] = True
 	runUsernameLikePassword(args)
@@ -217,7 +216,7 @@ def runAllModules(args):
 def configureLogging(args):
 	'''
 	Configure le logging
-	'''	
+	'''
 	logformatNoColor = "%(asctime)s %(levelname)-3s -: %(message)s"
 	logformatColor   = "%(bg_black)s%(asctime)s%(reset)s %(log_color)s%(levelname)-3s%(reset)s %(bold_black)s-:%(reset)s %(log_color)s%(message)s%(reset)s"#%(bold_black)s%(name)s:%(reset)s
 	datefmt = "%H:%M:%S"
@@ -406,7 +405,8 @@ def main():
 	#1.18- Parent parser: smb
 	PPsmb = argparse.ArgumentParser(add_help=False,formatter_class=myFormatterClass)
 	PPsmb._optionals.title = "smb commands"
-	PPsmb.add_argument('--capture',dest='captureSMBAuthentication',default=None,required=False,nargs=2,metavar=('local_ip','share_name'),help='capture the smb authentication')
+	PPsmb.add_argument('--no-color', dest='no-color', required=False, action='store_true', help='no color for output')
+	PPsmb.add_argument('--captureSMBAuthentication', dest='captureSMBAuthentication',default=None,required=False,nargs=2,metavar=('local_ip','share_name'),help='capture the smb authentication')
 	PPsmb.add_argument('--test-module',dest='test-module',action='store_true',help='test the module before use it')
 	#1.19- Parent parser: PrivilegeEscalation
 	PPprivilegeEscalation0 = argparse.ArgumentParser(add_help=False,formatter_class=myFormatterClass)
